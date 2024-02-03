@@ -1,0 +1,36 @@
+<h1>Movie List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Year</th>
+      <th>Director</th>
+      <th>Filming Location</th>
+      <th>Country</th>
+      <th>Average Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.description %></td>
+        <td><%= movie.year %></td>
+        <td><%= movie.director %></td>
+        <td><%= movie.filming_location %></td>
+        <td><%= movie.country %></td>
+        <td><%= movie.average_rating %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- Add a form for searching actors -->
+<h2>Search for Actor</h2>
+<%= form_with(url: search_actor_movies_path, method: :get) do |f| %>
+  <%= f.label :name, 'Actor Name' %>
+  <%= f.text_field :name %>
+  <%= f.submit 'Search' %>
+<% end %>
